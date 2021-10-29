@@ -6,7 +6,8 @@ on:
 jobs:
   ValidateModel:
     resources:
-      instance-type: P4000
+      cluster_id: clwz3v61t
+      instance-type: p2.xlarge
     inputs:
       model:
         type: dataset
@@ -31,7 +32,8 @@ jobs:
     needs:
       - ValidateModel
     resources:
-      instance-type: C3
+      cluster_id: clwz3v61t
+      instance-type: c5.xlarge
     uses: script@v1
     with:
       script: |-
@@ -40,7 +42,8 @@ jobs:
         port: 8000
         resources:
           replicas: 1
-          instanceType: P4000
+          cluster_id: clwz3v61t
+          instanceType: p2.xlarge
         EOF
         apt update > /dev/null
         apt-get install -y jq
